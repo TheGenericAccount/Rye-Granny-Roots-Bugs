@@ -6,14 +6,18 @@
 extents = Vector2( 32, 32 )
 
 [node name="GroundTop" type="StaticBody2D"]
-position = Vector2( 502, 293 )
-scale = Vector2( 18.72, 1 )
+position = Vector2( 925, 573 )
+scale = Vector2( 37.12, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
