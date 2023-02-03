@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/Bug.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 31.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1.19318, 31.7934 )
+
+[node name="Bug" type="KinematicBody2D"]
+scale = Vector2( 4.4, 3.11385 )
+collision_layer = 8
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 400.0
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 1 )
+
+[node name="DetectionRight" type="Area2D" parent="."]
+position = Vector2( 42.5, -0.642292 )
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRight"]
+position = Vector2( -11.1932, 0 )
+shape = SubResource( 2 )
+
+[node name="DetectionLeft" type="Area2D" parent="."]
+position = Vector2( -30.9091, -0.642292 )
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionLeft"]
+shape = SubResource( 2 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="DetectionRight" to="." method="_on_DetectionRight_area_entered"]
+[connection signal="area_exited" from="DetectionRight" to="." method="_on_DetectionRight_area_exited"]
+[connection signal="area_entered" from="DetectionLeft" to="." method="_on_DetectionLeft_area_entered"]
+[connection signal="area_exited" from="DetectionLeft" to="." method="_on_DetectionLeft_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
