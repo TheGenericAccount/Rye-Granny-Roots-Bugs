@@ -1,4 +1,4 @@
 # 2dgame
 
-# TODO
+## TODO
 ## ADD INSTRUCTIONS
