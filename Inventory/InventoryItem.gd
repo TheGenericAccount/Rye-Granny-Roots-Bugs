@@ -11,14 +11,14 @@ func _ready():
 	if itm_name in GameManager.inventory:
 		$Item/ItemSprite.texture=GameManager.inventory[itm_name].texture
 func select_itm():
-	if !GameManager.inventory.has(itm_name):
+	if !GameManager.inventory.has(itm_name) or GameManager.inventory[itm_name]["amount"]<=0:
 		return
 	get_node("Anim").play("select")
 	GameManager.updateCurrItm(itm_name)
 
 func _process(delta):
 	$Item.rect_rotation=-rect_rotation
-	if itm_name in GameManager.inventory and abs(GameManager.inventory[itm_name].amount)>0:
+	if itm_name in GameManager.inventory:
 		$Item.visible=true
 	else:
 		$Item.visible=false

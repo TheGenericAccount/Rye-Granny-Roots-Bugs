@@ -25,6 +25,7 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("use"):
 		match GameManager.curr_itm:
 			"shovel":
+				velocity.x=0
 				attacking=true
 				$Anim.play("attack")
 	else:

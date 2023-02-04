@@ -28,7 +28,7 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -110,11 +110,10 @@ position = Vector2( 24, 4 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -5, 218 )
+position = Vector2( 19, 212 )
 scale = Vector2( 1.79145, 1.79145 )
 frames = SubResource( 2 )
-animation = "attack"
-frame = 6
+animation = "walk"
 playing = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]

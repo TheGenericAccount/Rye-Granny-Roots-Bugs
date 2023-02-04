@@ -5,6 +5,7 @@ export (float) var growthPeriod=30
 export(Resource) var dieParticle=load("res://Particles/Lapai.tscn")
 const randomness=10
 var growth=0
+var player_in_range=false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -41,6 +42,15 @@ func updateHealth():
 	else:
 		root.play("damage_3")
 
+func _process(delta):
+	if growth>=2 and player_in_range:
+		$HarvestLabel.visible=true
+		if Input.is_action_just_pressed("harvest"):
+			queue_free()
+
+	else:
+		$HarvestLabel.visible=false
+
 func damage(amount):
 	health-=amount
 	updateHealth()
@@ -54,7 +64,17 @@ func damage(amount):
 func die():
 	queue_free()
 
+
+
 func _on_GrowthCycle_timeout():
 	growth+=1
 	setGrowthDelay()
 	updateGrowthSprite()
+
+
+func _on_Top_body_entered(body):
+	player_in_range=true
+
+
+func _on_Top_body_exited(body):
+	player_in_range=false
