@@ -1,4 +1,5 @@
 extends KinematicBody2D
+onready var GRAVITY=ProjectSettings.get_setting("physics/2d/default_gravity")
 enum Direction{
 	left=-1, right=1
 }
@@ -13,6 +14,7 @@ export (float) var damage=10
 
 var curr_state=State.moving
 var target=null
+onready var og_scale=scale.x
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,15 +27,24 @@ func updateState():
 	match curr_state:
 		State.moving:
 			velocity.x=speed*move_dir
+			$Sprite.play("Move")
 		State.attacking:
 			velocity.x=0
+			$Sprite.play("Eat")
+	match move_dir:
+		Direction.left:
+			$Sprite.flip_h=false
+		Direction.right:
+			$Sprite.flip_h=true
 
 func _ready():
 	updateState()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	move_and_collide(velocity*delta)
+	velocity.y += delta * GRAVITY
+	updateState()
+	velocity=move_and_slide(velocity)
 
 
 func _on_DetectionRight_area_entered(area):
@@ -70,5 +81,4 @@ func _on_AttackTimer_timeout():
 		return
 	target.damage(damage)
 	
-
 
