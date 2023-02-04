@@ -21,7 +21,6 @@ scale_random = 0.58
 color = Color( 0.552941, 0.443137, 0.176471, 1 )
 
 [node name="Kasniux" type="Particles2D"]
-position = Vector2( 961, 649 )
 lifetime = 1.5
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
