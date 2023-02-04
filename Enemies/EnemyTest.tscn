@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Terrain.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Objects/kupstelids.png" type="Texture" id=7]
 [ext_resource path="res://Inventory/Sprites/kastuvas.png" type="Texture" id=8]
 [ext_resource path="res://Skreptoriumas/IndieFlower-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Particles/Traiskiux.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Game/CurrItm.gd" type="Script" id=11]
+[ext_resource path="res://Particles/Lapai.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -25,19 +28,19 @@ texture = ExtResource( 6 )
 
 [node name="Plant" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 625, 659 )
-growthPeriod = 10.0
+dieParticle = ExtResource( 12 )
 
 [node name="Plant2" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 1105, 659 )
-growthPeriod = 10.0
+dieParticle = ExtResource( 12 )
 
 [node name="Plant4" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 1341, 664 )
-growthPeriod = 10.0
+dieParticle = ExtResource( 12 )
 
 [node name="Plant6" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 1579, 655 )
-growthPeriod = 10.0
+dieParticle = ExtResource( 12 )
 
 [node name="Kupstelids" type="Sprite" parent="."]
 position = Vector2( 392, 604 )
@@ -73,20 +76,23 @@ texture = ExtResource( 7 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Bug" parent="." instance=ExtResource( 3 )]
+[node name="Traiskiux" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -275, 502 )
+
+[node name="Bug" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -46, 981 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bug3" parent="." instance=ExtResource( 3 )]
+[node name="Bug3" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 2531, 980 )
 __meta__ = {
 "_edit_group_": true
 }
 move_dir = -1
 
-[node name="Bug2" parent="." instance=ExtResource( 3 )]
+[node name="Bug2" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -386, 993 )
 __meta__ = {
 "_edit_group_": true
@@ -102,7 +108,12 @@ anchor_bottom = 1.0
 
 [node name="ItmSelect" parent="Control" instance=ExtResource( 5 )]
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="CurrItm" type="Control" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 11 )
+
+[node name="Texture" type="TextureRect" parent="Control/CurrItm"]
 margin_left = 1776.0
 margin_top = 27.0
 margin_right = 1897.0
@@ -110,7 +121,7 @@ margin_bottom = 148.0
 texture = ExtResource( 8 )
 expand = true
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control/CurrItm"]
 margin_left = 1836.0
 margin_top = 133.0
 margin_right = 1903.0

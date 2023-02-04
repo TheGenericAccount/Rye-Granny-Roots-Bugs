@@ -9,10 +9,12 @@ export (String) var itm_name=""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if itm_name in GameManager.inventory:
-		$Item/ItemSprite.texture=load(GameManager.inventory[itm_name].texture)
-
+		$Item/ItemSprite.texture=GameManager.inventory[itm_name].texture
 func select_itm():
-	GameManager.curr_itm=itm_name
+	if !GameManager.inventory.has(itm_name):
+		return
+	get_node("Anim").play("select")
+	GameManager.updateCurrItm(itm_name)
 
 func _process(delta):
 	$Item.rect_rotation=-rect_rotation

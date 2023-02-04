@@ -43,12 +43,12 @@ func updateHealth():
 
 func damage(amount):
 	health-=amount
-	print_debug(name, " health left", health)
 	updateHealth()
 	if health<0:
 		$Anim.play("FadeOut")
 		var lapai=dieParticle.instance()
-		lapai.global_position=global_position
+		lapai.global_position=$ParticleSpawn.global_position
+		lapai.restart()
 		get_parent().add_child(lapai)
 
 func die():

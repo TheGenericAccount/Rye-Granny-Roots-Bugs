@@ -29,8 +29,7 @@ func _process(delta):
 			get_child(last_id).get_node("Anim").play("deselect")
 		last_id=itm_index
 		#if NO_ITMS>itm_index:
-		get_child(itm_index).get_node("Anim").play("select")
-		get_child(itm_index).select_itm()
+		get_child(itm_index).select_itm ()
 	elif visible:
 		visible=false
 		chg_itm()

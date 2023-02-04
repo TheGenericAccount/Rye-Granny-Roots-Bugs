@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Plants/Plant/1_food_2lvl.png" type="Texture" id=1]
 [ext_resource path="res://Plants/Plant.gd" type="Script" id=2]
@@ -91,6 +91,48 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Roots/Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Plant" type="Node2D"]
 position = Vector2( 46, -8 )
@@ -100,6 +142,7 @@ script = ExtResource( 2 )
 [node name="Top" type="Area2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Top"]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -34 )
 frames = SubResource( 3 )
 animation = "big"
@@ -113,6 +156,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Sprite" type="AnimatedSprite" parent="Roots"]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1, 48 )
 frames = SubResource( 4 )
 animation = "grow"
@@ -127,10 +171,14 @@ shape = SubResource( 2 )
 one_shot = true
 
 [node name="Traiskiux" parent="." instance=ExtResource( 11 )]
-emitting = false
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Top")
+autoplay = "default"
 anims/FadeOut = SubResource( 5 )
+anims/default = SubResource( 6 )
+
+[node name="ParticleSpawn" type="Node2D" parent="."]
+position = Vector2( 4.61538, -96.9231 )
 
 [connection signal="timeout" from="GrowthCycle" to="." method="_on_GrowthCycle_timeout"]

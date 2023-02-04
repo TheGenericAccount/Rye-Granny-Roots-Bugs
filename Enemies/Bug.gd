@@ -89,9 +89,11 @@ func damage(amount):
 	var explosion_small=damageParticle.instance()
 	explosion_small.global_position=global_position
 	get_parent().add_child(explosion_small)
+	explosion_small.restart()
 	if health<=0:
 		var explosion=deathParticle.instance()
 		explosion.global_position=global_position
 		get_parent().add_child(explosion)
+		explosion.restart()
 		queue_free()
 	
