@@ -5,7 +5,7 @@
 [node name="Terrain" type="Node2D"]
 
 [node name="GroundTop" parent="." instance=ExtResource( 1 )]
-position = Vector2( 966, 667 )
+position = Vector2( 973, 717 )
 
 [node name="GroundTop2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 916, 1124 )
