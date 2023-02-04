@@ -2,6 +2,7 @@ extends Node2D
 
 export (float) var health=100
 export (float) var growthPeriod=30
+export(Resource) var dieParticle=load("res://Particles/Lapai.tscn")
 const randomness=10
 var growth=0
 # Declare member variables here. Examples:
@@ -45,9 +46,13 @@ func damage(amount):
 	print_debug(name, " health left", health)
 	updateHealth()
 	if health<0:
-		queue_free()
-		#TODO visual feedback
+		$Anim.play("FadeOut")
+		var lapai=dieParticle.instance()
+		lapai.global_position=global_position
+		get_parent().add_child(lapai)
 
+func die():
+	queue_free()
 
 func _on_GrowthCycle_timeout():
 	growth+=1

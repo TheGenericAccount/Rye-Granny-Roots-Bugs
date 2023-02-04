@@ -23,8 +23,10 @@ func _physics_process(delta):
 		velocity.x = WALK_SPEED
 		$Sprite.flip_h=false
 	elif Input.is_action_just_pressed("use"):
-		attacking=true
-		$Anim.play("attack")
+		match GameManager.curr_itm:
+			"shovel":
+				attacking=true
+				$Anim.play("attack")
 	else:
 		velocity.x = lerp(velocity.x, 0, DAMPING)
 	if not attacking:

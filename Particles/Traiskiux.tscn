@@ -26,6 +26,7 @@ hue_variation = 0.5
 hue_variation_random = 0.78
 
 [node name="Traiskiux" type="Particles2D"]
+emitting = false
 amount = 120
 lifetime = 1.25
 one_shot = true

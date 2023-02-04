@@ -16,7 +16,7 @@ rect_rotation = -135.0
 itm_name = "shovel"
 
 [node name="Piece2" parent="." instance=ExtResource( 1 )]
-rect_rotation = -90.0
+rect_rotation = -89.8581
 itm_name = "basic"
 
 [node name="Piece3" parent="." instance=ExtResource( 1 )]
