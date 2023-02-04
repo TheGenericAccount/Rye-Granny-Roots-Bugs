@@ -87,5 +87,7 @@ func damage(amount):
 	health-=amount
 	if health<=0:
 		var explosion=deathParticle.instance()
+		explosion.global_position=global_position
 		get_parent().add_child(explosion)
+		queue_free()
 	

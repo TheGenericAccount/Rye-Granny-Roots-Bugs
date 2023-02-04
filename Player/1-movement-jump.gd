@@ -3,6 +3,7 @@ extends KinematicBody2D
 const WALK_SPEED = 600
 const JUMP_FORCE = 0
 const DAMPING=0.3
+const DAMAGE=10
 onready var GRAVITY=ProjectSettings.get_setting("physics/2d/default_gravity")
 var velocity = Vector2()
 var screen_size
@@ -43,5 +44,10 @@ func _physics_process(delta):
 
 func stop_attack():
 	attacking=false
+
+func attack():
+	for body in $AttackRange.get_overlapping_bodies():
+		if body.has_method("damage"):
+			body.damage(DAMAGE)
 
 
