@@ -25,8 +25,10 @@ hue_variation_random = 0.49
 
 [node name="Particles2D" type="Particles2D"]
 position = Vector2( 942, 611 )
+emitting = false
 amount = 25
 lifetime = 5.0
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
