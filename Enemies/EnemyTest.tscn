@@ -18,15 +18,19 @@ texture = ExtResource( 6 )
 
 [node name="Plant" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 628, 651 )
+growthPeriod = 10.0
 
 [node name="Plant2" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 1108, 651 )
+growthPeriod = 10.0
 
 [node name="Plant4" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 1344, 656 )
+growthPeriod = 10.0
 
 [node name="Plant6" parent="Plants" instance=ExtResource( 4 )]
 position = Vector2( 1582, 647 )
+growthPeriod = 10.0
 
 [node name="Kupstelids" type="Sprite" parent="."]
 position = Vector2( 392, 596 )

@@ -11,10 +11,12 @@ enum State{
 export (Direction) var move_dir=Direction.right
 export (float) var speed=150
 export (float) var damage=10
+export (float) var health=20
+export (Resource) var deathParticle=load("res://Particles/Traiskiux.tscn")
 
 var curr_state=State.moving
 var target=null
-onready var og_scale=scale.x
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -81,4 +83,9 @@ func _on_AttackTimer_timeout():
 		return
 	target.damage(damage)
 	
-
+func damage(amount):
+	health-=amount
+	if health<=0:
+		var explosion=deathParticle.instance()
+		get_parent().add_child(explosion)
+	
