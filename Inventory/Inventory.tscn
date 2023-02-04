@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Inventory/Piece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Inventory/ItmSelect.gd" type="Script" id=2]
+
+[node name="ItmSelect" type="Control"]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 586.0
+margin_bottom = 552.0
+script = ExtResource( 2 )
+
+[node name="Piece1" parent="." instance=ExtResource( 1 )]
+rect_rotation = 228.602
+itm_name = "shovel"
+
+[node name="Piece2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.427451, 0.466667, 0, 1 )
+rect_rotation = -87.2107
+itm_name = "potato"
+
+[node name="Piece3" parent="." instance=ExtResource( 1 )]
+rect_rotation = -45.1091
+
+[node name="Piece4" parent="." instance=ExtResource( 1 )]
+rect_rotation = -0.524501
+
+[node name="Piece5" parent="." instance=ExtResource( 1 )]
+rect_rotation = 408.109
+
+[node name="Piece6" parent="." instance=ExtResource( 1 )]
+rect_rotation = 92.2963
+
+[node name="Piece7" parent="." instance=ExtResource( 1 )]
+rect_rotation = 134.398
+
+[node name="Piece8" parent="." instance=ExtResource( 1 )]
+rect_rotation = 178.982

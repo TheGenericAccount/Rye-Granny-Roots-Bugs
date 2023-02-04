@@ -12,7 +12,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		if !visible:
 			visible=true
 			set_global_position(get_global_mouse_position())
@@ -25,12 +25,12 @@ func _process(delta):
 			itm_index+=1
 
 		itm_index=min(itm_index, NO_ITMS-1)
-		print(itm_index)
 		if(last_id>=0):
 			get_child(last_id).get_node("Anim").play("deselect")
 		last_id=itm_index
 		#if NO_ITMS>itm_index:
 		get_child(itm_index).get_node("Anim").play("select")
+		get_child(itm_index).select_itm()
 	elif visible:
 		visible=false
 		chg_itm()

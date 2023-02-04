@@ -6,7 +6,9 @@ extends Node
 # var b = "text"
 var inventory={
 	"shovel":-1,
+	"potato":1,
 }
+var curr_itm="shovel"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
