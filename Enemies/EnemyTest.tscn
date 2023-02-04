@@ -73,7 +73,6 @@ position = Vector2( -46, 981 )
 __meta__ = {
 "_edit_group_": true
 }
-damage = 0.0
 
 [node name="Bug3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2531, 980 )
@@ -81,7 +80,6 @@ __meta__ = {
 "_edit_group_": true
 }
 move_dir = -1
-damage = 0.0
 
 [node name="Bug2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -386, 993 )
@@ -89,7 +87,6 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 200.0
-damage = 0.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 414, 480 )

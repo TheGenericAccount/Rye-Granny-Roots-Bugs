@@ -20,11 +20,20 @@ func setGrowthDelay():
 #	pass
 
 func updateHealth():
-	pass #TODO add visual feedback
+	var root=$Roots/Sprite
+	if health>75:
+		root.play("damage_0")
+	elif health>50:
+		root.play("damage_1")
+	elif health>25:
+		root.play("damage_2")
+	else:
+		root.play("damage_3")
 
 func damage(amount):
 	health-=amount
 	print_debug(name, " health left", health)
+	updateHealth()
 	if health<0:
 		queue_free()
 		#TODO visual feedback
