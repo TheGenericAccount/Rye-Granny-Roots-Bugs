@@ -29,6 +29,7 @@ hue_variation_random = 0.78
 position = Vector2( 959, 606 )
 amount = 15
 lifetime = 1.25
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )

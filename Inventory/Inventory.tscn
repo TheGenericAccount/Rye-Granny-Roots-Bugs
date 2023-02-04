@@ -8,31 +8,30 @@ margin_left = 4.0
 margin_top = 1.0
 margin_right = 586.0
 margin_bottom = 552.0
+rect_scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 2 )
 
 [node name="Piece1" parent="." instance=ExtResource( 1 )]
-rect_rotation = 228.602
+rect_rotation = -135.0
 itm_name = "shovel"
 
 [node name="Piece2" parent="." instance=ExtResource( 1 )]
-modulate = Color( 0.427451, 0.466667, 0, 1 )
-rect_rotation = -87.2107
-itm_name = "potato"
+rect_rotation = -90.0
+itm_name = "basic"
 
 [node name="Piece3" parent="." instance=ExtResource( 1 )]
-rect_rotation = -45.1091
+rect_rotation = -45.0
 
 [node name="Piece4" parent="." instance=ExtResource( 1 )]
-rect_rotation = -0.524501
 
 [node name="Piece5" parent="." instance=ExtResource( 1 )]
-rect_rotation = 408.109
+rect_rotation = -315.182
 
 [node name="Piece6" parent="." instance=ExtResource( 1 )]
-rect_rotation = 92.2963
+rect_rotation = -270.182
 
 [node name="Piece7" parent="." instance=ExtResource( 1 )]
-rect_rotation = 134.398
+rect_rotation = -225.182
 
 [node name="Piece8" parent="." instance=ExtResource( 1 )]
-rect_rotation = 178.982
+rect_rotation = -180.182

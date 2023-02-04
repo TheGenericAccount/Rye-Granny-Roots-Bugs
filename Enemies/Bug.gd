@@ -12,7 +12,8 @@ export (Direction) var move_dir=Direction.right
 export (float) var speed=150
 export (float) var damage=10
 export (float) var health=20
-export (Resource) var deathParticle=load("res://Particles/Traiskiux.tscn")
+export (Resource) var damageParticle=load("res://Particles/Traiskiux.tscn")
+export (Resource) var deathParticle=load("res://Particles/Traiskiuxmazas.tscn")
 
 var curr_state=State.moving
 var target=null
@@ -85,6 +86,9 @@ func _on_AttackTimer_timeout():
 	
 func damage(amount):
 	health-=amount
+	var explosion_small=damageParticle.instance()
+	explosion_small.global_position=global_position
+	get_parent().add_child(explosion_small)
 	if health<=0:
 		var explosion=deathParticle.instance()
 		explosion.global_position=global_position

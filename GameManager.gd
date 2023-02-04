@@ -5,8 +5,14 @@ extends Node
 # var a = 2
 # var b = "text"
 var inventory={
-	"shovel":-1,
-	"potato":1,
+	"shovel":{
+		"amount":-1,
+		"texture":"res://Inventory/Sprites/kastuvas.png",
+	},
+	"basic":{
+		"amount":1,
+		"texture":"res://Plants/Plant/1_food_seed.png"
+	}
 }
 var curr_itm="shovel"
 
