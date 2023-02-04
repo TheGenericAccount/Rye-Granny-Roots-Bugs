@@ -179,6 +179,6 @@ anims/FadeOut = SubResource( 5 )
 anims/default = SubResource( 6 )
 
 [node name="ParticleSpawn" type="Node2D" parent="."]
-position = Vector2( 4.61538, -96.9231 )
+position = Vector2( 5.38461, -96.9231 )
 
 [connection signal="timeout" from="GrowthCycle" to="." method="_on_GrowthCycle_timeout"]
