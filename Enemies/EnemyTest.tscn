@@ -17,56 +17,50 @@ texture = ExtResource( 6 )
 [node name="Plants" type="Node2D" parent="."]
 
 [node name="Plant" parent="Plants" instance=ExtResource( 4 )]
-position = Vector2( 626, 661 )
+position = Vector2( 628, 651 )
 
 [node name="Plant2" parent="Plants" instance=ExtResource( 4 )]
-position = Vector2( 1104, 637 )
+position = Vector2( 1108, 651 )
 
 [node name="Plant4" parent="Plants" instance=ExtResource( 4 )]
-position = Vector2( 1344, 640 )
+position = Vector2( 1344, 656 )
 
 [node name="Plant6" parent="Plants" instance=ExtResource( 4 )]
-position = Vector2( 1582, 631 )
+position = Vector2( 1582, 647 )
 
 [node name="Kupstelids" type="Sprite" parent="."]
-position = Vector2( 392, 590 )
+position = Vector2( 392, 596 )
 scale = Vector2( 0.596, 0.596 )
 texture = ExtResource( 7 )
 
 [node name="Kupstelids3" type="Sprite" parent="."]
-position = Vector2( 888, 590 )
+position = Vector2( 888, 596 )
 scale = Vector2( 0.596, 0.596 )
 texture = ExtResource( 7 )
 
 [node name="Kupstelids4" type="Sprite" parent="."]
-position = Vector2( 1114, 591 )
+position = Vector2( 1114, 597 )
 scale = Vector2( 0.596, 0.596 )
 texture = ExtResource( 7 )
 
 [node name="Kupstelids5" type="Sprite" parent="."]
-position = Vector2( 1340, 582 )
+position = Vector2( 1340, 593 )
 scale = Vector2( 0.596, 0.596 )
 texture = ExtResource( 7 )
 
 [node name="Kupstelids6" type="Sprite" parent="."]
-position = Vector2( 1588, 576 )
+position = Vector2( 1588, 596 )
 scale = Vector2( 0.596, 0.596 )
 texture = ExtResource( 7 )
 
 [node name="Kupstelids2" type="Sprite" parent="."]
-position = Vector2( 622, 591 )
+position = Vector2( 622, 595 )
 scale = Vector2( 0.596, 0.596 )
 texture = ExtResource( 7 )
 
 [node name="Terrain" parent="." instance=ExtResource( 2 )]
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="ItmSelect" parent="Control" instance=ExtResource( 5 )]
 
 [node name="Bug" parent="." instance=ExtResource( 3 )]
 position = Vector2( -46, 981 )
@@ -90,3 +84,9 @@ speed = 200.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 414, 480 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ItmSelect" parent="Control" instance=ExtResource( 5 )]
