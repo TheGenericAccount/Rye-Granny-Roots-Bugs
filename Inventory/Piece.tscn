@@ -96,10 +96,10 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="Amount" type="Label" parent="Item"]
-margin_left = -75.333
-margin_top = -31.667
-margin_right = -35.333
-margin_bottom = 27.333
+margin_left = -66.333
+margin_top = -65.667
+margin_right = -12.333
+margin_bottom = 23.333
 custom_fonts/font = ExtResource( 5 )
 text = "999"
 

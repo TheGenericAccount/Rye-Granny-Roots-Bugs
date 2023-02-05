@@ -1,0 +1,195 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Plants/Plant.gd" type="Script" id=1]
+[ext_resource path="res://Skreptoriumas/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Plants/Plant/root_2lvl.png" type="Texture" id=3]
+[ext_resource path="res://Plants/Plant/root_1lvl.png" type="Texture" id=4]
+[ext_resource path="res://Plants/Plant/1_food_3lvl.png" type="Texture" id=5]
+[ext_resource path="res://Plants/Plant/1_food_2lvl.png" type="Texture" id=6]
+[ext_resource path="res://Plants/Plant/1_food_1lvl.png" type="Texture" id=7]
+[ext_resource path="res://Plants/Plant/root_3lvl_harm.png" type="Texture" id=8]
+[ext_resource path="res://Plants/Plant/root_3lvl.png" type="Texture" id=9]
+[ext_resource path="res://Plants/Plant/root_2lvl_dead.png" type="Texture" id=10]
+[ext_resource path="res://Plants/Plant/root_3lvl_dead.png" type="Texture" id=11]
+[ext_resource path="res://Particles/Traiskiux.tscn" type="PackedScene" id=12]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "big",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "med",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "small",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.7692, 138 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "damage_0",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "damage_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "damage_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "damage_3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "grow",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 70.5, 160.25 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "FadeOut"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Roots/Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Roots/Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Plant" type="Node2D"]
+position = Vector2( 46, -8 )
+scale = Vector2( 1.3, 1.3 )
+script = ExtResource( 1 )
+growthPeriod = 10.0
+normalSeed = "basic"
+
+[node name="Top" type="Area2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="Top"]
+position = Vector2( 0, -34 )
+frames = SubResource( 3 )
+animation = "big"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2( 6.15384, -139 )
+shape = SubResource( 1 )
+
+[node name="Roots" type="Area2D" parent="."]
+position = Vector2( 0, 41.5385 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite" type="AnimatedSprite" parent="Roots"]
+position = Vector2( 1, 48 )
+frames = SubResource( 4 )
+animation = "grow"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roots"]
+position = Vector2( 3, 223.25 )
+shape = SubResource( 2 )
+
+[node name="GrowthCycle" type="Timer" parent="."]
+one_shot = true
+
+[node name="Traiskiux" parent="." instance=ExtResource( 12 )]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Top")
+autoplay = "default"
+anims/FadeOut = SubResource( 5 )
+anims/default = SubResource( 6 )
+
+[node name="ParticleSpawn" type="Node2D" parent="."]
+position = Vector2( 5.38461, -96.9231 )
+
+[node name="HarvestLabel" type="Label" parent="."]
+margin_left = -68.4615
+margin_top = -383.846
+margin_right = 75.5385
+margin_bottom = -341.846
+custom_fonts/font = ExtResource( 2 )
+text = "E to harvest"
+
+[connection signal="body_entered" from="Top" to="." method="_on_Top_body_entered"]
+[connection signal="body_exited" from="Top" to="." method="_on_Top_body_exited"]
+[connection signal="timeout" from="GrowthCycle" to="." method="_on_GrowthCycle_timeout"]
