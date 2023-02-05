@@ -34,6 +34,12 @@ func updateState():
 		State.attacking:
 			velocity.x=0
 			$Sprite.play("Eat")
+			$EatLeft.visible=false
+			$EatRight.visible=false
+			if(move_dir==Direction.left):
+				$EatLeft.visible=true
+			else:
+				$EatRight.visible=true
 	match move_dir:
 		Direction.left:
 			$Sprite.flip_h=false
