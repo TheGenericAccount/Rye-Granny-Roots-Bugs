@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 200, 316 )
 
-[node name="Root" type="Node"]
+[node name="Scene" type="Node"]
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 961, 307 )

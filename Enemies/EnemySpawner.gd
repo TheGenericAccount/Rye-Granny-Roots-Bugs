@@ -32,12 +32,14 @@ func refreshTimer():
 #	pass
 
 func spawnEnemy():
-
-	#var better_ticket=(GameManager.plantValue-5)
-	#if rng.randi_range(0, 100):
-		
+	var lvl=0
+	var better_ticket=(max(0, GameManager.plantValue-8)*7)
+	if rand_range(0, 100)<better_ticket:
+		lvl=1
+	else:
+		lvl=0
 	
-	var curr_bug=bugs[0].instance()
+	var curr_bug=bugs[lvl].instance()
 	if randi()%2==0:
 		print("left")
 		curr_bug.move_dir=Direction.right
@@ -48,6 +50,8 @@ func spawnEnemy():
 		curr_bug.position=$Right.position
 	add_child(curr_bug)
 
+	$SpawnTimer.wait_time=(lvl+1)*10/GameManager.plantValue+ rand_range(0, 1)
+	$SpawnTimer.start()
+
 func _on_SpawnTimer_timeout():
 	spawnEnemy()
-	refreshTimer()

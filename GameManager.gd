@@ -4,6 +4,8 @@ var itm_indicator
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+onready var loadingPanel=preload("res://Game/LoadingPanel.tscn")
+
 onready var inventory={
 	"shovel":{
 		"amount":1,
@@ -67,15 +69,46 @@ func play_sound(sound:Resource, volume_percent:float):
 	var source_instance=audio_source.instance()
 	source_instance.stream=sound
 	source_instance.volume_db=volume_percent-80
-	get_tree().get_root().add_child(source_instance)
+	get_tree().get_root().call_deferred("add_child", source_instance)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	play_sound(preload("res://Audio/Soundtrackv2.ogg"), 70)
+	var loading=loadingPanel.instance()
+	add_child(loading)
+	var timer=Timer.new()
+	timer.name="Timer"
+	timer.one_shot=true
+	timer.wait_time=.5
+	add_child(timer)
+	timer.connect("timeout", self, "nextSpawnStage")
 	#updateCurrItm(curr_itm)
 	#TRIGGERS FROM ITM INDICATOR
 
+func remove():
+	get_node("/Game").queue_free()
+
+var scn
+
+
+
+func load_scene(scene):
+	scn=scene
+	$LoadingPanel/Anim.play("fade_in")
+	$Timer.start()
+
+func nextSpawnStage():
+	if scn:
+		get_tree().get_root().get_node("Game").queue_free()
+		var curr=scn.instance()
+		curr.name="Game"
+		get_tree().get_root().add_child(curr)
+		scn=null
+	else:
+		$LoadingPanel/Anim.play("fade_out")
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if plantValue==2 and inventory["basic"]["amount"]<=0:
+		addSeed("basic", 1)

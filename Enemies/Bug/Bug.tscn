@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Enemies/Bug.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Worm/Sprites/vabs.png" type="Texture" id=2]
-[ext_resource path="res://Enemies/Worm/Sprites/vabs2.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Bug/Sprites/suauges_vab_3.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Bug/Sprites/suauges_vab1.png" type="Texture" id=3]
 [ext_resource path="res://Audio/Eatcrunch.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Enemies/Worm/Sprites/vabs3.png" type="Texture" id=5]
 [ext_resource path="res://Particles/Kasniux.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Bug/Sprites/suauges_vab2.png" type="Texture" id=7]
 [ext_resource path="res://Enemies/Bug/Sprites/vabs_auges_valgo_2.png" type="Texture" id=8]
@@ -16,7 +15,7 @@ animations = [ {
 "name": "Eat",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Move",
 "speed": 5.0
@@ -36,7 +35,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 100.0
+speed = 70.0
 damage = 50.0
 health = 40.0
 
@@ -44,8 +43,9 @@ health = 40.0
 position = Vector2( 57.1429, -15.7143 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 4 )
-animation = "Eat"
-frame = 1
+animation = "Move"
+frame = 3
+playing = true
 offset = Vector2( -98.5714, -17.1429 )
 
 [node name="DetectionRight" type="Area2D" parent="."]
@@ -69,7 +69,7 @@ shape = SubResource( 3 )
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 175.714, 112.857, -207.778, 110, -41.4286, -115.714, 7.14286, -115.714 )
+polygon = PoolVector2Array( 175.714, 105, -207.778, 105, -41.4286, -115.714, 7.14286, -115.714 )
 
 [node name="EatingStream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
@@ -77,11 +77,9 @@ volume_db = -5.0
 
 [node name="EatLeft" parent="." instance=ExtResource( 6 )]
 position = Vector2( -242.857, -5.71429 )
-scale = Vector2( 1, 1 )
 
 [node name="EatRight" parent="." instance=ExtResource( 6 )]
 position = Vector2( 211.429, 22.8571 )
-scale = Vector2( 1, 1 )
 
 [connection signal="area_entered" from="DetectionRight" to="." method="_on_DetectionRight_area_entered"]
 [connection signal="area_exited" from="DetectionRight" to="." method="_on_DetectionRight_area_exited"]
