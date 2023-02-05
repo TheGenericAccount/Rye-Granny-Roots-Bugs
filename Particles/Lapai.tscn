@@ -4,7 +4,7 @@
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
-emission_sphere_radius = 26.35
+emission_sphere_radius = 68.17
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -17,7 +17,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 370.7
 angle_random = 1.0
-scale = 0.9
+scale = 0.5
 scale_random = 1.0
 color = Color( 0.341176, 0.380392, 0.164706, 1 )
 hue_variation = 0.28
@@ -25,10 +25,8 @@ hue_variation_random = 0.49
 
 [node name="Particles2D" type="Particles2D"]
 position = Vector2( 942, 611 )
-emitting = false
 amount = 25
 lifetime = 5.0
-one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
