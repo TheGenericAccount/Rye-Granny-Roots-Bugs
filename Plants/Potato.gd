@@ -1,7 +1,7 @@
 extends Node2D
 
 export (float) var health=100
-export (float) var value=.75
+export (float) var value=1.5
 export (float) var growthPeriod=30
 export(Resource) var dieParticle=load("res://Particles/Lapai.tscn")
 export(String)var normalSeed=""
@@ -13,6 +13,7 @@ const randomness=10
 var growth=0
 var player_in_range=false
 
+var noPotatoes=0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -23,6 +24,7 @@ func _ready():
 	$Roots/Sprite.play("grow")
 	$Roots/Sprite.set_frame(1)
 	GameManager.plantValue+=value
+	$AddDelay.start()
 	setGrowthDelay()
 	updateGrowthSprite()
 
@@ -66,8 +68,8 @@ func harvest():
 	var rng=RandomNumberGenerator.new()
 	rng.randomize()
 	if(normalSeed!=""):
-		var amount=rng.randi_range(minSeeds, maxSeeds)
-		GameManager.addSeed(normalSeed, amount)
+		var amount=rng.randi_range(0, 1)
+		GameManager.addSeed(normalSeed, noPotatoes)
 	if(specialSeed!="'"):
 		var res=rng.randf_range(0.0, 1.0)
 		if res<=specialProbability:
@@ -75,6 +77,9 @@ func harvest():
 	queue_free()
 
 func damage(amount):
+	if(noPotatoes>0):
+		remove_potato()
+		return
 	health-=amount
 	updateHealth()
 	if health<0:
@@ -88,11 +93,24 @@ func die():
 	GameManager.plantValue-=value
 	queue_free()
 
+func add_potato():
+	var pot
+	while !pot or pot.visible:
+		pot=$Potatoes.get_children()[randi()%$Potatoes.get_child_count()]
+	pot.visible=true
+	noPotatoes+=1
 
+func remove_potato():
+	noPotatoes=max(0, noPotatoes-1)
+	for c in $Potatoes.get_children():
+		if(c.visible):
+			c.visible=false
+			break
 
 func _on_GrowthCycle_timeout():
 	if growth<2:
 		GameManager.play_sound(load("res://Audio/Grow.wav"), 60)
+		$AddDelay.start()
 	growth+=1
 	setGrowthDelay()
 	updateGrowthSprite()
@@ -104,3 +122,7 @@ func _on_Top_body_entered(body):
 
 func _on_Top_body_exited(body):
 	player_in_range=false
+
+
+func _on_AddDelay_timeout():
+	add_potato()

@@ -6,6 +6,8 @@ extends Node2D
 # var b = "text"
 var level=0
 
+
+
 onready var bugs=[
 	preload("res://Enemies/Worm/Worm.tscn")
 ]
@@ -19,7 +21,7 @@ func _ready():
 	refreshTimer()
 
 func _process(delta):
-	pass
+	GameManager.enemies=get_child_count()-3
 
 func refreshTimer():
 	$SpawnTimer.wait_time=10/GameManager.plantValue+ rand_range(0, 1)
@@ -31,9 +33,11 @@ func refreshTimer():
 func spawnEnemy():
 	var curr_bug=bugs[level].instance()
 	if randi()%2==0:
+		print("left")
 		curr_bug.move_dir=Direction.right
 		curr_bug.position=$Left.position
 	else:
+		print("right")
 		curr_bug.move_dir=Direction.left
 		curr_bug.position=$Right.position
 	add_child(curr_bug)

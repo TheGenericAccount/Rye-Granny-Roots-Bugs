@@ -46,7 +46,7 @@ position = Vector2( -270, 24.2857 )
 position = Vector2( -1.11111, 1.11111 )
 frames = SubResource( 4 )
 animation = "Move"
-frame = 1
+frame = 2
 playing = true
 
 [node name="DetectionRight" type="Area2D" parent="."]
