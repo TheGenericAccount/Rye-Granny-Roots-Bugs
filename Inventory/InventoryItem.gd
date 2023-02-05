@@ -17,6 +17,8 @@ func select_itm():
 	GameManager.updateCurrItm(itm_name)
 
 func _process(delta):
+	if GameManager.inventory.has(itm_name):
+		$Item/Amount.text=str(GameManager.inventory[itm_name]["amount"])
 	$Item.rect_rotation=-rect_rotation
 	if itm_name in GameManager.inventory:
 		$Item.visible=true
