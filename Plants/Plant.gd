@@ -80,7 +80,7 @@ func damage(amount):
 	if health<0:
 		$Anim.play("FadeOut")
 		var lapai=dieParticle.instance()
-		lapai.global_position=$ParticleSpawn.global_position
+		lapai.position=Vector2(0, -40)
 		lapai.restart()
 		get_parent().add_child(lapai)
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/suauges_vab_3.png-cb030436bf7ead0ec5e382ff375fd8fb.stex"
+path="res://.import/suauges_vab2.png-34a075acf888a4bd13774f0a7f2e5410.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Koloradovabaliukiukas/suauges_vab_3.png"
-dest_files=[ "res://.import/suauges_vab_3.png-cb030436bf7ead0ec5e382ff375fd8fb.stex" ]
+source_file="res://Enemies/Bug/Sprites/suauges_vab2.png"
+dest_files=[ "res://.import/suauges_vab2.png-34a075acf888a4bd13774f0a7f2e5410.stex" ]
 
 [params]
 

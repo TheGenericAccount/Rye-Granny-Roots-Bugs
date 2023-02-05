@@ -114,7 +114,7 @@ position = Vector2( 23, 210 )
 scale = Vector2( 0.177333, 0.181349 )
 frames = SubResource( 2 )
 animation = "walk"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]

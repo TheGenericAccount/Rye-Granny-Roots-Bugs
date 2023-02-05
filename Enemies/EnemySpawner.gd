@@ -9,7 +9,8 @@ var level=0
 
 
 onready var bugs=[
-	preload("res://Enemies/Worm/Worm.tscn")
+	preload("res://Enemies/Worm/Worm.tscn"),
+	preload("res://Enemies/Bug/Bug.tscn"),
 ]
 
 enum Direction{
@@ -31,7 +32,12 @@ func refreshTimer():
 #	pass
 
 func spawnEnemy():
-	var curr_bug=bugs[level].instance()
+
+	#var better_ticket=(GameManager.plantValue-5)
+	#if rng.randi_range(0, 100):
+		
+	
+	var curr_bug=bugs[0].instance()
 	if randi()%2==0:
 		print("left")
 		curr_bug.move_dir=Direction.right

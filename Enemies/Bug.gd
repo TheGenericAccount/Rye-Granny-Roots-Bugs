@@ -27,6 +27,8 @@ var target=null
 var velocity=Vector2.ZERO
 
 func updateState():
+	$EatLeft.visible=false
+	$EatRight.visible=false
 	match curr_state:
 		State.moving:
 			velocity.x=speed*move_dir
@@ -34,8 +36,6 @@ func updateState():
 		State.attacking:
 			velocity.x=0
 			$Sprite.play("Eat")
-			$EatLeft.visible=false
-			$EatRight.visible=false
 			if(move_dir==Direction.left):
 				$EatLeft.visible=true
 			else:

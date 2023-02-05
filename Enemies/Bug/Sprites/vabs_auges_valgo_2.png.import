@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/vabs_auges_valgo_2.png-018342d3038a88a67f9659121105f586.stex"
+path="res://.import/vabs_auges_valgo_2.png-7431a1f67ad273fabc9624d46133331b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Koloradovabaliukiukas/vabs_auges_valgo_2.png"
-dest_files=[ "res://.import/vabs_auges_valgo_2.png-018342d3038a88a67f9659121105f586.stex" ]
+source_file="res://Enemies/Bug/Sprites/vabs_auges_valgo_2.png"
+dest_files=[ "res://.import/vabs_auges_valgo_2.png-7431a1f67ad273fabc9624d46133331b.stex" ]
 
 [params]
 

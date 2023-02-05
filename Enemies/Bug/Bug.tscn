@@ -6,8 +6,8 @@
 [ext_resource path="res://Audio/Eatcrunch.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Enemies/Worm/Sprites/vabs3.png" type="Texture" id=5]
 [ext_resource path="res://Particles/Kasniux.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/Worm/Sprites/vabalas be valgymo.png" type="Texture" id=7]
-[ext_resource path="res://Enemies/Worm/Sprites/vabalas be valgymo 2.png" type="Texture" id=8]
+[ext_resource path="res://Enemies/Bug/Sprites/suauges_vab2.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/Bug/Sprites/vabs_auges_valgo_2.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -34,16 +34,19 @@ collision_layer = 8
 collision_mask = 9
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
+speed = 100.0
+damage = 50.0
+health = 40.0
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -1.11111, 1.11111 )
+position = Vector2( 57.1429, -15.7143 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 4 )
 animation = "Eat"
-playing = true
-flip_h = true
+frame = 1
+offset = Vector2( -98.5714, -17.1429 )
 
 [node name="DetectionRight" type="Area2D" parent="."]
 position = Vector2( 42.5, -0.642292 )
@@ -66,20 +69,18 @@ shape = SubResource( 3 )
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 146.667, 110, -207.778, 110, -16.6667, -41.1111, 5.55556, -40 )
+polygon = PoolVector2Array( 175.714, 112.857, -207.778, 110, -41.4286, -115.714, 7.14286, -115.714 )
 
 [node name="EatingStream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
 
 [node name="EatLeft" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( -255.714, 18.5714 )
+position = Vector2( -242.857, -5.71429 )
 scale = Vector2( 1, 1 )
 
 [node name="EatRight" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 268.571, 12.8571 )
+position = Vector2( 211.429, 22.8571 )
 scale = Vector2( 1, 1 )
 
 [connection signal="area_entered" from="DetectionRight" to="." method="_on_DetectionRight_area_entered"]

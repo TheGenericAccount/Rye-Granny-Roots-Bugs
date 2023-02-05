@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Terrain.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Plants/PlantPlace.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Inventory/Sprites/kastuvas.png" type="Texture" id=8]
 [ext_resource path="res://Skreptoriumas/Font.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Particles/Traiskiux.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Game/CurrItm.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -58,9 +57,6 @@ shape = SubResource( 1 )
 position = Vector2( 913, 459 )
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Traiskiux" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( -275, 502 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
