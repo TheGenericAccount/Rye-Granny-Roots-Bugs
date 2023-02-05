@@ -22,21 +22,22 @@ position = Vector2( 961, 307 )
 texture = ExtResource( 6 )
 
 [node name="PlantPlaces" type="Node2D" parent="."]
+position = Vector2( 0, 27 )
 
 [node name="PlantPlace" parent="PlantPlaces" instance=ExtResource( 7 )]
-position = Vector2( 364, 566 )
+position = Vector2( 344, 566 )
 
 [node name="PlantPlace2" parent="PlantPlaces" instance=ExtResource( 7 )]
-position = Vector2( 635, 569 )
+position = Vector2( 637, 566 )
 
 [node name="PlantPlace3" parent="PlantPlaces" instance=ExtResource( 7 )]
-position = Vector2( 903, 565 )
+position = Vector2( 931, 566 )
 
 [node name="PlantPlace4" parent="PlantPlaces" instance=ExtResource( 7 )]
-position = Vector2( 1170, 571 )
+position = Vector2( 1225, 566 )
 
 [node name="PlantPlace5" parent="PlantPlaces" instance=ExtResource( 7 )]
-position = Vector2( 1471, 562 )
+position = Vector2( 1519, 566 )
 
 [node name="BugDestroyer" type="Area2D" parent="."]
 collision_layer = 0
