@@ -21,6 +21,9 @@ onready var inventory={
 var curr_itm="shovel"
 var plant_scene=null
 var plant_ghost=null
+var player
+
+var plantValue=2
 
 func updateCurrItm(itm):
 	if !inventory.has(itm) or (inventory[curr_itm]["amount"]<=0):
@@ -43,6 +46,21 @@ func updateCurrItm(itm):
 func useSeed():
 	inventory[curr_itm]["amount"]-=1
 	updateCurrItm(curr_itm)
+
+func addSeed(type, amount=1):
+	if not inventory.has(type):
+		return
+	inventory[type]["amount"]+=amount
+	updateCurrItm(curr_itm)
+
+onready var audio_source=preload("res://Game/Audio.tscn")
+
+func play_sound(sound:Resource, volume_percent:float):
+	var source_instance=audio_source.instance()
+	source_instance.stream=sound
+	source_instance.volume_db=volume_percent-80
+	get_tree().get_root().add_child(source_instance)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

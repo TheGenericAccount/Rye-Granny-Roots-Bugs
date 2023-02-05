@@ -1,21 +1,19 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Terrain.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/Worm/Worm.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Plants/Plant.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/BugDestroyer.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/EnemySpawner.gd" type="Script" id=4]
 [ext_resource path="res://Inventory/Inventory.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/background_new.png" type="Texture" id=6]
-[ext_resource path="res://Objects/kupstelids.png" type="Texture" id=7]
+[ext_resource path="res://Plants/PlantPlace.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Inventory/Sprites/kastuvas.png" type="Texture" id=8]
 [ext_resource path="res://Skreptoriumas/Font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Particles/Traiskiux.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Game/CurrItm.gd" type="Script" id=11]
-[ext_resource path="res://Particles/Lapai.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Objects/PlantPlace.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 204.698, 430.369 )
+extents = Vector2( 200, 316 )
 
 [node name="Root" type="Node"]
 
@@ -23,56 +21,45 @@ extents = Vector2( 204.698, 430.369 )
 position = Vector2( 961, 307 )
 texture = ExtResource( 6 )
 
-[node name="Plants" type="Node2D" parent="."]
+[node name="PlantPlaces" type="Node2D" parent="."]
 
-[node name="Plant" parent="Plants" instance=ExtResource( 4 )]
-position = Vector2( 625, 659 )
-dieParticle = ExtResource( 12 )
+[node name="PlantPlace" parent="PlantPlaces" instance=ExtResource( 7 )]
+position = Vector2( 364, 566 )
 
-[node name="PlantPlace" type="Area2D" parent="."]
-position = Vector2( 395, 583 )
-scale = Vector2( 0.596, 0.596 )
-script = ExtResource( 13 )
+[node name="PlantPlace2" parent="PlantPlaces" instance=ExtResource( 7 )]
+position = Vector2( 635, 569 )
 
-[node name="PlantPivot" type="Node2D" parent="PlantPlace"]
-position = Vector2( -1.67786, 100.671 )
+[node name="PlantPlace3" parent="PlantPlaces" instance=ExtResource( 7 )]
+position = Vector2( 903, 565 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlantPlace"]
-position = Vector2( 5.03345, -326.342 )
+[node name="PlantPlace4" parent="PlantPlaces" instance=ExtResource( 7 )]
+position = Vector2( 1170, 571 )
+
+[node name="PlantPlace5" parent="PlantPlaces" instance=ExtResource( 7 )]
+position = Vector2( 1471, 562 )
+
+[node name="BugDestroyer" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BugDestroyer"]
+position = Vector2( -622, 912 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="PlantPlace"]
-texture = ExtResource( 7 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BugDestroyer"]
+position = Vector2( 2581, 917 )
+shape = SubResource( 1 )
 
 [node name="Terrain" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 913, 459 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Traiskiux" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( -275, 502 )
-
-[node name="Bug" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -46, 981 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Bug3" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 2531, 980 )
-__meta__ = {
-"_edit_group_": true
-}
-move_dir = -1
-
-[node name="Bug2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -386, 993 )
-__meta__ = {
-"_edit_group_": true
-}
-speed = 200.0
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 913, 459 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -103,5 +90,17 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "99999999"
 
-[connection signal="mouse_entered" from="PlantPlace" to="PlantPlace" method="_on_PlantPlace_mouse_entered"]
-[connection signal="mouse_exited" from="PlantPlace" to="PlantPlace" method="_on_PlantPlace_mouse_exited"]
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Left" type="Node2D" parent="EnemySpawner"]
+position = Vector2( -228, 1001 )
+
+[node name="Right" type="Node2D" parent="EnemySpawner"]
+position = Vector2( 2156, 966 )
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
+one_shot = true
+
+[connection signal="body_entered" from="BugDestroyer" to="BugDestroyer" method="_on_BugDestroyer_body_entered"]
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_SpawnTimer_timeout"]

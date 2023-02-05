@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemies/Bug.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Worm/Sprites/vabs3.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Enemies/Worm/Sprites/vabs2.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/Worm/Sprites/vab_vago3.png" type="Texture" id=6]
 [ext_resource path="res://Particles/Kasniux.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/Eatcrunch.ogg" type="AudioStream" id=8]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -69,7 +70,11 @@ shape = SubResource( 3 )
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 146.667, 111.111, -207.778, 112.222, -16.6667, -41.1111, 5.55556, -40 )
+polygon = PoolVector2Array( 146.667, 110, -207.778, 110, -16.6667, -41.1111, 5.55556, -40 )
+
+[node name="EatingStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
 
 [connection signal="area_entered" from="DetectionRight" to="." method="_on_DetectionRight_area_entered"]
 [connection signal="area_exited" from="DetectionRight" to="." method="_on_DetectionRight_area_exited"]

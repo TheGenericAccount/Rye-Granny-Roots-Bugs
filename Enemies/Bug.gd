@@ -55,6 +55,7 @@ func _on_DetectionRight_area_entered(area):
 	move_dir=Direction.right
 	target=area.get_parent()
 	$AttackTimer.start()
+	$EatingStream.play()
 	updateState()
 
 
@@ -63,9 +64,11 @@ func _on_DetectionLeft_area_entered(area):
 	move_dir=Direction.left
 	target=area.get_parent()
 	$AttackTimer.start()
+	$EatingStream.play()
 	updateState()
 
 func stopAttack():
+	$EatingStream.stop()
 	$AttackTimer.stop()
 	curr_state=State.moving
 	updateState()
@@ -92,6 +95,7 @@ func damage(amount):
 	explosion_small.restart()
 	if health<=0:
 		var explosion=deathParticle.instance()
+		GameManager.play_sound(load("res://Audio/Bugkill.wav"), 60)
 		explosion.global_position=global_position
 		get_parent().add_child(explosion)
 		explosion.restart()

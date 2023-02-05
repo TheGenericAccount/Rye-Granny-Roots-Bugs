@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WalkCharacter.wav-d9ba438a0e193059e958cb82893dc6db.sample"
+
+[deps]
+
+source_file="res://Audio/WalkCharacter.wav"
+dest_files=[ "res://.import/WalkCharacter.wav-d9ba438a0e193059e958cb82893dc6db.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Eatcrunch.ogg-3c0c91aa1e95ba6060b0f5874a59f831.oggstr"
+
+[deps]
+
+source_file="res://Audio/Eatcrunch.ogg"
+dest_files=[ "res://.import/Eatcrunch.ogg-3c0c91aa1e95ba6060b0f5874a59f831.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

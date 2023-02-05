@@ -10,6 +10,7 @@ var screen_size
 var attacking=false
 func _ready():
 	screen_size = get_viewport_rect().size
+	GameManager.player=self
 	
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
@@ -54,3 +55,8 @@ func attack():
 			body.damage(DAMAGE)
 
 
+
+
+func _on_WalkTimer_timeout():
+	if abs(velocity.x)>WALK_SPEED/2:
+		GameManager.play_sound(preload("res://Audio/WalkCharacter2.wav"), 70)
