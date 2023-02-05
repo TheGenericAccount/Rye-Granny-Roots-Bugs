@@ -21,6 +21,7 @@ itm_name = "basic"
 
 [node name="Piece3" parent="." instance=ExtResource( 1 )]
 rect_rotation = -45.0
+itm_name = "potato"
 
 [node name="Piece4" parent="." instance=ExtResource( 1 )]
 

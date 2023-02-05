@@ -16,12 +16,20 @@ onready var inventory={
 		"plant_scene":preload("res://Plants/Plant.tscn"),
 		"plant_ghost":preload("res://Plants/PlantGhost.tscn"),
 		"stackable":true
-	}
+	},
+	"potato":{
+		"amount":0,
+		"texture":preload("res://Inventory/Sprites/bulve_geyna.png"),
+		"plant_scene":preload("res://Plants/Potato.tscn"),
+		"plant_ghost":preload("res://Plants/PotatoGhost.tscn"),
+		"stackable":true
+	},
 }
 var curr_itm="shovel"
 var plant_scene=null
 var plant_ghost=null
 var player
+var enemies
 
 var plantValue=2
 

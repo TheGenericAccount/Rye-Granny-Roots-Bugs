@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/suauges_vab2.png-88502e2979b7226f0d923c2cdc5ab1ff.stex"
+path="res://.import/Animation5.png-a51944dc4e5187d484fb0fb54ee455cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Koloradovabaliukiukas/suauges_vab2.png"
-dest_files=[ "res://.import/suauges_vab2.png-88502e2979b7226f0d923c2cdc5ab1ff.stex" ]
+source_file="res://Player/SpritesV4/Animation5.png"
+dest_files=[ "res://.import/Animation5.png-a51944dc4e5187d484fb0fb54ee455cc.stex" ]
 
 [params]
 

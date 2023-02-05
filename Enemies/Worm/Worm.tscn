@@ -2,16 +2,16 @@
 
 [ext_resource path="res://Enemies/Bug.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Worm/Sprites/vabs3.png" type="Texture" id=2]
-[ext_resource path="res://Enemies/Worm/Sprites/vab_vago2.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Worm/Sprites/vabalas be valgymo.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/Worm/Sprites/vabs.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Worm/Sprites/vabs2.png" type="Texture" id=5]
-[ext_resource path="res://Enemies/Worm/Sprites/vab_vago3.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/Worm/Sprites/vabalas be valgymo 2.png" type="Texture" id=6]
 [ext_resource path="res://Particles/Kasniux.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Audio/Eatcrunch.ogg" type="AudioStream" id=8]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Eat",
 "speed": 5.0
@@ -38,16 +38,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Kasniux" parent="." instance=ExtResource( 7 )]
-visible = false
-position = Vector2( -270, 24.2857 )
-
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.11111, 1.11111 )
 frames = SubResource( 4 )
-animation = "Move"
-frame = 1
+animation = "Eat"
 playing = true
+flip_h = true
 
 [node name="DetectionRight" type="Area2D" parent="."]
 position = Vector2( 42.5, -0.642292 )
@@ -75,6 +71,16 @@ polygon = PoolVector2Array( 146.667, 110, -207.778, 110, -16.6667, -41.1111, 5.5
 [node name="EatingStream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = -5.0
+
+[node name="EatLeft" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -255.714, 18.5714 )
+scale = Vector2( 1, 1 )
+
+[node name="EatRight" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 268.571, 12.8571 )
+scale = Vector2( 1, 1 )
 
 [connection signal="area_entered" from="DetectionRight" to="." method="_on_DetectionRight_area_entered"]
 [connection signal="area_exited" from="DetectionRight" to="." method="_on_DetectionRight_area_exited"]

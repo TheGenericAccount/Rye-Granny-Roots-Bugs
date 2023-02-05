@@ -17,7 +17,7 @@ func _process(delta):
 			visible=true
 			set_global_position(get_global_mouse_position())
 			start_pos=get_global_mouse_position()
-		if start_pos.distance_to(get_global_mouse_position())<20:
+		if start_pos and start_pos.distance_to(get_global_mouse_position())<20:
 			return
 		var angle=(-(start_pos-get_global_mouse_position()).angle_to(Vector2.UP) + PI)
 		var itm_index=0

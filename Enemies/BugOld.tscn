@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Enemies/Bug.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/Bug.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1.19318, 20.3927 )
@@ -13,7 +13,7 @@ extents = Vector2( 1.16478, 20.8745 )
 scale = Vector2( 4.4, 3.11385 )
 collision_layer = 8
 collision_mask = 9
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -23,7 +23,7 @@ speed = 400.0
 self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 0, 10.7011 )
 scale = Vector2( 1, 0.665591 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="DetectionRight" type="Area2D" parent="."]
 position = Vector2( 42.5, -0.642292 )

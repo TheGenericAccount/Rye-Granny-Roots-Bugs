@@ -11,14 +11,15 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if get_node_or_null("plant"):
+	if $PlantPivot.get_node_or_null("plant"):
 		return
 	if GameManager.plant_scene!=null and hasMouse and global_position.distance_to(GameManager.player.global_position)<MAX_PLANT_DISTANCE:
-		if get_node_or_null("ghost")==null:
+		if $PlantPivot.get_node_or_null("ghost")==null:
 			var ghost=GameManager.plant_ghost.instance()
 			ghost.name="ghost"
-			ghost.position=$PlantPivot.position
-			add_child(ghost)
+			#ghost.position=$PlantPivot.position
+			ghost.position=Vector2.ZERO
+			$PlantPivot.add_child(ghost)
 		if Input.is_action_just_pressed("use"):
 			plant()
 	else:
@@ -28,8 +29,9 @@ func plant():
 	destroyGhost()
 	var plant=GameManager.plant_scene.instance()
 	plant.name="plant"
-	plant.position=$PlantPivot.position
-	add_child(plant)
+	plant.position=Vector2.ZERO
+	#plant.position=$PlantPivot.position
+	$PlantPivot.add_child(plant)
 	GameManager.useSeed()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -37,7 +39,7 @@ func plant():
 
 
 func destroyGhost():
-	var ghost =get_node_or_null("ghost")
+	var ghost =$PlantPivot.get_node_or_null("ghost")
 	if ghost!=null:
 		ghost.queue_free()
 

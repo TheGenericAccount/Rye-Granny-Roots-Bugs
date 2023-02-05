@@ -12,8 +12,8 @@ export (Direction) var move_dir=Direction.right
 export (float) var speed=150
 export (float) var damage=10
 export (float) var health=20
-export (Resource) var damageParticle=load("res://Particles/Traiskiux.tscn")
-export (Resource) var deathParticle=load("res://Particles/Traiskiuxmazas.tscn")
+export (Resource) var damageParticle=load("res://Particles/Traiskiuxmazas.tscn")
+export (Resource) var deathParticle=load("res://Particles/Traiskiux.tscn")
 
 var curr_state=State.moving
 var target=null
@@ -27,6 +27,8 @@ var target=null
 var velocity=Vector2.ZERO
 
 func updateState():
+	$EatLeft.visible=false
+	$EatRight.visible=false
 	match curr_state:
 		State.moving:
 			velocity.x=speed*move_dir
@@ -34,6 +36,10 @@ func updateState():
 		State.attacking:
 			velocity.x=0
 			$Sprite.play("Eat")
+			if(move_dir==Direction.left):
+				$EatLeft.visible=true
+			else:
+				$EatRight.visible=true
 	match move_dir:
 		Direction.left:
 			$Sprite.flip_h=false
@@ -45,6 +51,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if GameManager.plantValue==2 and GameManager.enemies>3:
+		move_dir=Direction.right
 	velocity.y += delta * GRAVITY
 	updateState()
 	velocity=move_and_slide(velocity)
@@ -90,13 +98,13 @@ func _on_AttackTimer_timeout():
 func damage(amount):
 	health-=amount
 	var explosion_small=damageParticle.instance()
-	explosion_small.global_position=global_position
+	explosion_small.global_position=position
 	get_parent().add_child(explosion_small)
 	explosion_small.restart()
 	if health<=0:
 		var explosion=deathParticle.instance()
 		GameManager.play_sound(load("res://Audio/Bugkill.wav"), 60)
-		explosion.global_position=global_position
+		explosion.global_position=position
 		get_parent().add_child(explosion)
 		explosion.restart()
 		queue_free()

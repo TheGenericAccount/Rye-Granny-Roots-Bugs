@@ -10,7 +10,7 @@ extents = Vector2( 147.5, 276.513 )
 script = ExtResource( 2 )
 
 [node name="PlantPivot" type="Node2D" parent="."]
-position = Vector2( 1.67785, 46.9799 )
+position = Vector2( 0, 40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 5.5, -172.487 )
